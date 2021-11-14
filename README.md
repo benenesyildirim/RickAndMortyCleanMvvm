@@ -6,6 +6,9 @@ Room will be added ASAP.
 Design will be updated.
 ```
 
+![rickmorty-clean-header](https://user-images.githubusercontent.com/26333702/141682430-523693e4-54a1-4133-9bc5-2c05e9917734.jpg)
+
+
 ## Authors
 
 Just me :D
