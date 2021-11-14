@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="character"
+            type="com.rickmorty.cleanarchitecture.domain.model.Character" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <View
+            android:id="@+id/background"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@drawable/character_row_background"
+            app:layout_constraintBottom_toBottomOf="@id/status_tv"
+            app:layout_constraintTop_toTopOf="@id/name_tv" />
+
+        <ImageView
+            android:id="@+id/character_image"
+            loadImage="@{character.image}"
+            android:layout_width="125dp"
+            android:layout_height="125dp"
+            android:layout_margin="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/rick_placeholder" />
+
+        <TextView
+            android:id="@+id/name_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:paddingTop="5dp"
+            android:text="@{character.name}"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/species_tv"
+            app:layout_constraintEnd_toEndOf="@+id/background"
+            app:layout_constraintEnd_toStartOf="@+id/barrier"
+            app:layout_constraintStart_toEndOf="@+id/character_image"
+            tools:text="Rick Sanchez" />
+
+        <TextView
+            android:id="@+id/species_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="@{character.species}"
+            app:layout_constraintBottom_toBottomOf="@+id/character_image"
+            app:layout_constraintEnd_toEndOf="@+id/background"
+            app:layout_constraintEnd_toStartOf="@+id/barrier"
+            app:layout_constraintStart_toEndOf="@+id/character_image"
+            app:layout_constraintTop_toBottomOf="@+id/name_tv"
+            app:layout_constraintTop_toTopOf="@+id/character_image"
+            tools:text="Species" />
+
+        <TextView
+            android:id="@+id/status_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:paddingBottom="5dp"
+            android:text="@{character.status}"
+            app:layout_constraintEnd_toEndOf="@+id/background"
+            app:layout_constraintEnd_toStartOf="@+id/barrier"
+            app:layout_constraintStart_toEndOf="@+id/character_image"
+            app:layout_constraintTop_toBottomOf="@+id/species_tv"
+            tools:text="Alive" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="end"
+            app:constraint_referenced_ids="status_tv,species_tv,name_tv,background" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
